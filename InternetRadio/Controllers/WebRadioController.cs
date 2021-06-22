@@ -18,7 +18,7 @@ namespace InternetRadio.Controllers
             _webRadio = webRadio;
             _webPlayer = webPlayer;
         }
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View(_radiosRepository.GetAllStation());
         }
@@ -30,22 +30,26 @@ namespace InternetRadio.Controllers
 
         public ActionResult Stop()
         {
-            return View(_radiosRepository.GetAllStation());
+            return View("Index", _radiosRepository.GetAllStation());
         }
 
         public ActionResult VolumeUp()
         {
-            return View(_radiosRepository.GetAllStation());
+            return View("Index", _radiosRepository.GetAllStation());
         }
 
         public ActionResult VolumeDown()
         {
-            return View(_radiosRepository.GetAllStation());
+            return View("Index", _radiosRepository.GetAllStation());
+        }
+        public ActionResult VolumeUpUp()
+        {
+            return View("Index", _radiosRepository.GetAllStation());
         }
 
-        public IActionResult Index_old()
+        public ActionResult VolumeDownDown()
         {
-            return View();
+            return View("Index", _radiosRepository.GetAllStation());
         }
     }
 }

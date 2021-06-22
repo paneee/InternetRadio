@@ -1,31 +1,25 @@
-﻿
-
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-@model IEnumerable<InternetRadio.Models.WebRadio>
+﻿@model IEnumerable<InternetRadio.Models.WebRadio>
 
 
     <div class="text-center m-5">
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <td colspan="2">@Html.DropDownList("Radios", new SelectList(Model.Select(x => new { Value = x.Url, Text = x.Name }), "Value", "Text"))</td>
+                    <td colspan="2">@Html.DropDownList("Radios", new SelectList(Model.Select(x => new { Value = x.Url, Text = x.Name }), "Value", "Text"), new { @class = "btn btn-info dropdown-toggle btn-lg btn-block" })</td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <td>@Html.ActionLink("Play","Play", "WebRadio", null, new {@class= "btn btn-primary btn-lg btn-block" })</td>
+                    <td>@Html.ActionLink("Stop", "Stop", "WebRadio", null, new { @class = "btn btn-danger btn-lg btn-block" })</td>
                 </tr>
                 <tr>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
+                    <td>@Html.ActionLink("Volume -", "VolumeDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
+                    <td>@Html.ActionLink("Volume +", "VolumeUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
                 </tr>
                 <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td>@Html.ActionLink("Volume --", "VolumeDownDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
+                    <td>@Html.ActionLink("Volume ++", "VolumeUpUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
                 </tr>
             </tbody>
         </table>

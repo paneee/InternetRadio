@@ -6,14 +6,14 @@ using InternetRadio.Models;
 namespace InternetRadio.Controllers
 { 
     [ApiController]
-    [Route("api/[controller]/[action]/{id?}")]
-    public class RadioController : ControllerBase
+    [Route("[controller]/[action]/{id?}")]
+    public class ApiRadioController : ControllerBase
     {
         private readonly IWebRadiosRepository _radiosRepository;
         private readonly IWebRadio _webRadio;
         private readonly IWebPlayer _webPlayer;
 
-        public RadioController(IWebRadiosRepository radiosRepository, IWebRadio webRadio, IWebPlayer webPlayer)
+        public ApiRadioController(IWebRadiosRepository radiosRepository, IWebRadio webRadio, IWebPlayer webPlayer)
         {
             _radiosRepository = radiosRepository;
             _webRadio = webRadio;
