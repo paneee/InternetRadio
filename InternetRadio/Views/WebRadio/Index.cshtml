@@ -6,13 +6,29 @@
 
 @model IEnumerable<InternetRadio.Models.WebRadio>
 
-@Html.DropDownList("Radios", new SelectList(Model.Select(x => new { Value = x.Url, Text = x.Name }), "Value", "Text"))</th>
 
-@Html.ActionLink("Play","Play","WebRadio")
-
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="text-center m-5">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td colspan="2">@Html.DropDownList("Radios", new SelectList(Model.Select(x => new { Value = x.Url, Text = x.Name }), "Value", "Text"))</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 
