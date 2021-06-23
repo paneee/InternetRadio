@@ -1,30 +1,34 @@
-﻿@model IEnumerable<InternetRadio.Models.WebRadio>
-
-
-    <div class="text-center m-5">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <td colspan="2">@Html.DropDownList("Radios", new SelectList(Model.Select(x => new { Value = x.Url, Text = x.Name }), "Value", "Text"), new { @class = "btn btn-info dropdown-toggle btn-lg btn-block" })</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>@Html.ActionLink("Play","Play", "WebRadio", null, new {@class= "btn btn-primary btn-lg btn-block" })</td>
-                    <td>@Html.ActionLink("Stop", "Stop", "WebRadio", null, new { @class = "btn btn-danger btn-lg btn-block" })</td>
-                </tr>
-                <tr>
-                    <td>@Html.ActionLink("Volume -", "VolumeDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-                    <td>@Html.ActionLink("Volume +", "VolumeUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-                </tr>
-                <tr>
-                    <td>@Html.ActionLink("Volume --", "VolumeDownDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-                    <td>@Html.ActionLink("Volume ++", "VolumeUpUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+﻿@model InternetRadio.Models.InternetRadioViewModel
 
 
 
-
+<div class="text-center m-5">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <form asp-action="Play">
+                        <div class="form-group">
+                            <input type="submit" value="Play" class="btn btn-primary btn-lg btn-block" />
+                            @Html.DropDown("efe", Model)
+                        </div>
+                    </form>
+                </td>
+                <td>@Html.ActionLink("Stop", "Stop", "WebRadio", null, new { @class = "btn btn-danger btn-lg btn-block" })</td>
+            </tr>
+            <tr>
+                <td>@Html.ActionLink("Volume -", "VolumeDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
+                <td>@Html.ActionLink("Volume +", "VolumeUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
+            </tr>
+            <tr>
+                <td>@Html.ActionLink("Volume --", "VolumeDownDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
+                <td>@Html.ActionLink("Volume ++", "VolumeUpUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

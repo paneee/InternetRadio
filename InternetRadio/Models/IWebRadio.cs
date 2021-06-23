@@ -7,6 +7,7 @@ namespace InternetRadio.Models
 {
     public interface IWebRadio
     {
-
+        public string GetUrl();
+        public string GetName();
     }
 }

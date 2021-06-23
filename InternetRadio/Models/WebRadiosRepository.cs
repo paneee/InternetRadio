@@ -27,8 +27,7 @@ namespace InternetRadio.Models
 
         private bool ContainsRadio(WebRadio webRadio)
         {
-            var k = _webRadio.Where(p => p.Name == webRadio.Name && p.Url == webRadio.Url).Count();
-            if (_webRadio.Where(p => p.Name == webRadio.Name && p.Url == webRadio.Url).Count() > 0)
+            if (_webRadio.Where(p => p.GetName() == webRadio.GetName() && p.GetUrl() == webRadio.GetUrl()).Count() > 0)
             {
                 return true;
             }
@@ -55,7 +54,7 @@ namespace InternetRadio.Models
         {
             if (ContainsRadio(webradio))
             {
-                _webRadio.RemoveAll((c => c.Name == webradio.Name && c.Url == webradio.Url));
+                _webRadio.RemoveAll((c => c.GetName() == webradio.GetName() && c.GetUrl() == webradio.GetUrl()));
                 return true;
             }
             else

@@ -21,14 +21,13 @@ namespace InternetRadio.Controllers
         }
 
         [HttpGet]
-        public WebRadio Play(int id)
+        public WebRadio Play(WebRadio webRadio)
         {
             var list = _radiosRepository.GetAllStation().ToList();
-            if (id < list.Count())
-            {
-                var url = list[id].Url;
-                _webPlayer.Play(url);
-                return list[id];
+            if (list.Contains(webRadio))
+            { 
+                _webPlayer.Play(webRadio);
+                return webRadio;
             }
             else
             {
