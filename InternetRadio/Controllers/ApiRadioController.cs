@@ -26,7 +26,7 @@ namespace InternetRadio.Controllers
             var list = _radiosRepository.GetAllStation().ToList();
             if (list.Contains(webRadio))
             { 
-                _webPlayer.Play(webRadio);
+                _webPlayer.Play(webRadio.GetUrl());
                 return webRadio;
             }
             else

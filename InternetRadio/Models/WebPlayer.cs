@@ -1,5 +1,4 @@
 ﻿using NAudio.Wave;
-using System.Collections.Generic;
 
 namespace InternetRadio.Models
 {
@@ -7,28 +6,28 @@ namespace InternetRadio.Models
     {
         private MediaFoundationReader _mediaFoundationReader;
         private WaveOutEvent _waveOutEvent; 
-        private WebRadio _actualPlay;
-        private WebRadio _lastPlay;
+        private string _actualPlay;
+        private string _lastPlay;
 
-        public WebRadio GetActualPlay()
+        public string GetActualPlay()
         {
             return _actualPlay;
         }
 
-        public WebRadio GetLastPlay()
+        public string GetLastPlay()
         {
             return _lastPlay;
         }
 
-        public void Play(WebRadio webRadio)
+        public void Play(string urlWebRadio)
         {
             if(_waveOutEvent == null)
             {
-                _mediaFoundationReader = new MediaFoundationReader(webRadio.GetUrl());
+                _mediaFoundationReader = new MediaFoundationReader(urlWebRadio);
                 _waveOutEvent = new WaveOutEvent();
                 _waveOutEvent.Init(_mediaFoundationReader);
                 _waveOutEvent.Play();
-                _actualPlay = webRadio;
+                _actualPlay = urlWebRadio;
             }
             else
             {
@@ -36,11 +35,11 @@ namespace InternetRadio.Models
                 _waveOutEvent.Stop();
                 _waveOutEvent.Dispose();
                 _mediaFoundationReader.Dispose();
-                _mediaFoundationReader = new MediaFoundationReader(webRadio.GetUrl());
+                _mediaFoundationReader = new MediaFoundationReader(urlWebRadio);
                 _waveOutEvent = new WaveOutEvent();
                 _waveOutEvent.Init(_mediaFoundationReader);
                 _waveOutEvent.Play();
-                _actualPlay = webRadio;
+                _actualPlay = urlWebRadio;
             } 
         }
 
@@ -51,6 +50,26 @@ namespace InternetRadio.Models
             _waveOutEvent.Dispose();
             _mediaFoundationReader.Dispose();
             _actualPlay = null;
+        }
+
+        public void VolumeDown()
+        {
+            _waveOutEvent.Volume = 0;
+        }
+
+        public void VolumeDownDown()
+        {
+            _waveOutEvent.Volume = 0;
+        }
+
+        public void VolumeUp()
+        {
+            _waveOutEvent.Volume = _waveOutEvent.Volume + 1;
+        }
+
+        public void VolumeUpUp()
+        {
+            _waveOutEvent.Volume = _waveOutEvent.Volume + 15;
         }
     }
 }

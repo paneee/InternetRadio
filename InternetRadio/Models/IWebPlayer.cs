@@ -8,9 +8,13 @@ namespace InternetRadio.Models
 {
     public interface IWebPlayer
     {
-        public void Play(WebRadio webRadio);
+        public void Play(string urlWebRadio);
         public void Stop();
-        public WebRadio GetActualPlay();
-        public WebRadio GetLastPlay();
+        public void VolumeUp();
+        public void VolumeUpUp();
+        public void VolumeDown();
+        public void VolumeDownDown();
+        public string GetActualPlay();
+        public string GetLastPlay();
     }
 }
