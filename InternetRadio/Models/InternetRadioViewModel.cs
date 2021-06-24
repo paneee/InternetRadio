@@ -8,5 +8,6 @@ namespace InternetRadio.Models
     {
         public IEnumerable<SelectListItem> WebRadios { get; set; }
         public string SelectetRadioUrl { get; set; }
+        public string ActualPlayed { get; set; }
     }
 }

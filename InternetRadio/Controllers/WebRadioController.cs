@@ -13,22 +13,39 @@ namespace InternetRadio.Controllers
         private readonly IWebRadio _webRadio;
         private readonly IWebPlayer _webPlayer;
         private readonly InternetRadioViewModel _internetRadioViewModel = new InternetRadioViewModel();
+        
+        
         public WebRadioController(IWebRadiosRepository radiosRepository, IWebRadio webRadio, IWebPlayer webPlayer)
         {
             _radiosRepository = radiosRepository;
             _webRadio = webRadio;
             _webPlayer = webPlayer;
             _internetRadioViewModel.WebRadios = new SelectList(_radiosRepository.GetAllStation().Select(x => new { Value = x.GetUrl(), Text = x.GetName() }), "Value", "Text");
-
         }
 
+
+        private void RefreshActualPlayed()
+        {
+            List<WebRadio> listaRadio = _radiosRepository.GetAllStation().ToList();
+            WebRadio radio = listaRadio.Where(p => p.GetUrl() == _webPlayer.GetActualPlay()).FirstOrDefault();
+            if (radio != null)
+            {
+                _internetRadioViewModel.ActualPlayed = radio.GetName();
+            }
+            else
+            {
+                _internetRadioViewModel.ActualPlayed = "- - - - -";
+            }
+        }
 
 
         [HttpGet]
         public ActionResult Index()
         {
+            RefreshActualPlayed();
             return View(_internetRadioViewModel);
         }
+
 
         [HttpPost]
         public ActionResult Action(InternetRadioViewModel internetRadioViewModel, string submit)
@@ -43,22 +60,23 @@ namespace InternetRadio.Controllers
                     _webPlayer.Stop();
                     break;
 
-                case "Volume+":
+                case "Volume +":
                     _webPlayer.VolumeUp();
                     break;
 
-                case "Volume++":
+                case "Volume ++":
                     _webPlayer.VolumeUpUp();
                     break;
 
-                case "Volume-":
+                case "Volume -":
                     _webPlayer.VolumeDown();
                     break;
 
-                case "Volume--":
+                case "Volume --":
                     _webPlayer.VolumeDownDown();
                     break;
             }
+            RefreshActualPlayed();
             return View("Index", _internetRadioViewModel);
         }
     }
