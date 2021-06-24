@@ -26,9 +26,9 @@ namespace InternetRadio.Controllers
 
         private void RefreshViewModel()
         {
-            //_internetRadioViewModel.WebRadioSelectList = new SelectList(_radiosRepository.GetAllStation().Select(x => new { Value = x.GetUrl(), Text = x.GetName() }), "Value", "Text");
-           // _internetRadioViewModel.WebRadioActualPlay = _webPlayer.GetActualPlay();
-           // _internetRadioViewModel.WebRadioLastPlay = _webPlayer.GetLastPlay();
+            _internetRadioViewModel.WebRadios = new SelectList(_radiosRepository.GetAllStation().Select(x => new { Value = x.GetUrl(), Text = x.GetName() }), "Value", "Text");
+           //_internetRadioViewModel.WebRadioActualPlay = _webPlayer.GetActualPlay();
+           ///_internetRadioViewModel.WebRadioLastPlay = _webPlayer.GetLastPlay();
         }
 
         [HttpGet]
@@ -39,33 +39,30 @@ namespace InternetRadio.Controllers
         }
 
         [HttpPost]
-        public ActionResult Play(InternetRadioViewModel collection)
+        public ActionResult Action(InternetRadioViewModel collection, string submit)
         {
+            switch(submit)
+            {
+                case "Play":
+                    int j = 9;
+                    break;
+
+                case "Stop":
+                    break;
+
+                case "VolumeUp":
+                    break;
+
+                case "VolumeUpUp":
+                    break;
+
+                case "VolumeDown":
+                    break;
+
+                case "VolumeDownDown":
+                    break;
+            }
             RefreshViewModel();
-            return View("Index", _internetRadioViewModel);
-        }
-
-        public ActionResult Stop()
-        {
-            return View("Index", _internetRadioViewModel);
-        }
-
-        public ActionResult VolumeUp()
-        {
-            return View("Index", _internetRadioViewModel);
-        }
-
-        public ActionResult VolumeDown()
-        {
-            return View("Index", _internetRadioViewModel);
-        }
-        public ActionResult VolumeUpUp()
-        {
-            return View("Index", _internetRadioViewModel);
-        }
-
-        public ActionResult VolumeDownDown()
-        {
             return View("Index", _internetRadioViewModel);
         }
     }

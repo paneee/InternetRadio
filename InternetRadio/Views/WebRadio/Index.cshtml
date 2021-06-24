@@ -1,34 +1,26 @@
 ﻿@model InternetRadio.Models.InternetRadioViewModel
 
 
-
-<div class="text-center m-5">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <td colspan="2"></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <form asp-action="Play">
-                        <div class="form-group">
-                            <input type="submit" value="Play" class="btn btn-primary btn-lg btn-block" />
-                            @Html.DropDown("efe", Model)
-                        </div>
-                    </form>
-                </td>
-                <td>@Html.ActionLink("Stop", "Stop", "WebRadio", null, new { @class = "btn btn-danger btn-lg btn-block" })</td>
-            </tr>
-            <tr>
-                <td>@Html.ActionLink("Volume -", "VolumeDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-                <td>@Html.ActionLink("Volume +", "VolumeUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-            </tr>
-            <tr>
-                <td>@Html.ActionLink("Volume --", "VolumeDownDown", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-                <td>@Html.ActionLink("Volume ++", "VolumeUpUp", "WebRadio", null, new { @class = "btn btn-success btn-lg btn-block" })</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<form asp-action="Action">
+    <div class="text-center m-5">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td colspan="2"> @Html.DropDownListFor(x => x.SelectetRadio, new SelectList(Model.WebRadios, "Value", "Text"), "Wybierz stację", new { @class = "btn btn-lg btn-info btn-block" })</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="Play" class="btn btn-primary btn-lg btn-block" /></td>
+                    <td><input type="submit" name="submit" value="Stop" class="btn btn-danger btn-lg btn-block" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="Volume-" class="btn btn-success btn-lg btn-block" /></td>
+                    <td><input type="submit" name="submit" value="Volume+" class="btn btn-success btn-lg btn-block" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="submit" value="Volume--" class="btn btn-success btn-lg btn-block" /></td>
+                    <td><input type="submit" name="submit" value="Volume++" class="btn btn-success btn-lg btn-block" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
