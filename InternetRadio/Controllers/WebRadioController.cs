@@ -13,8 +13,8 @@ namespace InternetRadio.Controllers
         private readonly IWebRadio _webRadio;
         private readonly IWebPlayer _webPlayer;
         private readonly InternetRadioViewModel _internetRadioViewModel = new InternetRadioViewModel();
-        
-        
+
+
         public WebRadioController(IWebRadiosRepository radiosRepository, IWebRadio webRadio, IWebPlayer webPlayer)
         {
             _radiosRepository = radiosRepository;
@@ -50,7 +50,7 @@ namespace InternetRadio.Controllers
         [HttpPost]
         public ActionResult Action(InternetRadioViewModel internetRadioViewModel, string submit)
         {
-            switch(submit)
+            switch (submit)
             {
                 case "Play":
                     _webPlayer.Play(internetRadioViewModel.SelectetRadioUrl);

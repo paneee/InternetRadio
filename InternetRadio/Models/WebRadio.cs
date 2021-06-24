@@ -7,8 +7,8 @@ namespace InternetRadio.Models
 {
     public class WebRadio: IWebRadio
     {
-        private string _name { get; set; }
-        private string _url { get; set; }
+        public string name { get; set; }
+        public string url { get; set; }
       
         public WebRadio()
         {
@@ -16,18 +16,23 @@ namespace InternetRadio.Models
         }
         public WebRadio(string name, string url)
         {
-            _name = name;
-            _url = url;
+            this.name = name;
+            this.url = url;
         }
 
         public string GetUrl()
         {
-            return _url;
+            return url;
         }
 
         public string GetName()
         {
-            return _name;
+            return name;
+        }
+
+        public WebRadio GetWebRadio()
+        {
+            return this;
         }
     }
 }
