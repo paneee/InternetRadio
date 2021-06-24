@@ -10,6 +10,7 @@ namespace InternetRadio.Models
     {
         public void Play(string urlWebRadio);
         public void Stop();
+        public int ActualVolume();
         public void VolumeUp();
         public void VolumeUpUp();
         public void VolumeDown();

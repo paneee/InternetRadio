@@ -30,11 +30,12 @@ namespace InternetRadio.Controllers
             WebRadio radio = listaRadio.Where(p => p.GetUrl() == _webPlayer.GetActualPlay()).FirstOrDefault();
             if (radio != null)
             {
+                _internetRadioViewModel.ActualVolume = _webPlayer.ActualVolume();
                 _internetRadioViewModel.ActualPlayed = radio.GetName();
             }
             else
             {
-                _internetRadioViewModel.ActualPlayed = "- - - - -";
+                _internetRadioViewModel.ActualPlayed = " - - - - - ";
             }
         }
 

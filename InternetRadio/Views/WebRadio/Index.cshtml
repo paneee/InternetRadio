@@ -6,7 +6,8 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <td colspan="2"> <h1 class="btn btn-warning btn-lg btn-block">Teraz gra:  @Model.ActualPlayed </h1></td>
+                    <td> <h1 class="btn btn-warning btn-lg btn-block">Gra:  @Model.ActualPlayed </h1></td>
+                    <td> <h1 class="btn btn-secondary btn-lg btn-block"> Głośność: @Model.ActualVolume %</h1></td>
                 </tr>
                 <tr>
                     <td colspan="2"> @Html.DropDownListFor(x => x.SelectetRadioUrl, new SelectList(Model.WebRadios, "Value", "Text"), "Wybierz stację", new { @class = "btn btn-lg btn-info btn-block" })</td>

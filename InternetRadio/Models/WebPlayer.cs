@@ -1,4 +1,5 @@
 ﻿using NAudio.Wave;
+using System;
 
 namespace InternetRadio.Models
 {
@@ -9,7 +10,7 @@ namespace InternetRadio.Models
         private string _actualPlay;
         private string _lastPlay;
         private float volumeBigStep = 0.2f;
-        private float volumeSmallStep = 0.1f;
+        private float volumeSmallStep = 0.05f;
 
         public string GetActualPlay()
         {
@@ -52,6 +53,11 @@ namespace InternetRadio.Models
             _waveOutEvent.Dispose();
             _mediaFoundationReader.Dispose();
             _actualPlay = null;
+        }
+
+        public int ActualVolume()
+        {
+            return Convert.ToInt16(100 * _waveOutEvent.Volume);
         }
 
         public void VolumeDown()
