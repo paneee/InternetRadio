@@ -8,6 +8,8 @@ namespace InternetRadio.Models
         private WaveOutEvent _waveOutEvent; 
         private string _actualPlay;
         private string _lastPlay;
+        private float volumeBigStep = 0.2f;
+        private float volumeSmallStep = 0.1f;
 
         public string GetActualPlay()
         {
@@ -54,22 +56,50 @@ namespace InternetRadio.Models
 
         public void VolumeDown()
         {
-            _waveOutEvent.Volume = 0;
+            if (_waveOutEvent.Volume - volumeSmallStep >= 0)
+            {
+                _waveOutEvent.Volume = _waveOutEvent.Volume - volumeSmallStep;
+            }
+            else
+            {
+                _waveOutEvent.Volume = 0;
+            }
         }
 
         public void VolumeDownDown()
         {
-            _waveOutEvent.Volume = 0;
+            if (_waveOutEvent.Volume - volumeBigStep >= 0)
+            {
+                _waveOutEvent.Volume = _waveOutEvent.Volume - volumeBigStep;
+            }
+            else
+            {
+                _waveOutEvent.Volume = 0;
+            }
         }
 
         public void VolumeUp()
         {
-            _waveOutEvent.Volume = _waveOutEvent.Volume + 1;
+            if (_waveOutEvent.Volume + volumeSmallStep <= 1)
+            {
+                _waveOutEvent.Volume = _waveOutEvent.Volume + volumeSmallStep;
+            }
+            else
+            {
+                _waveOutEvent.Volume = 1;
+            }
         }
 
         public void VolumeUpUp()
         {
-            _waveOutEvent.Volume = _waveOutEvent.Volume + 15;
+            if (_waveOutEvent.Volume + volumeBigStep <= 1)
+            {
+                _waveOutEvent.Volume = _waveOutEvent.Volume + volumeBigStep;
+            }
+            else
+            {
+                _waveOutEvent.Volume = 1;
+            }
         }
     }
 }

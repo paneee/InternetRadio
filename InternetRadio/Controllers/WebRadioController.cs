@@ -43,19 +43,19 @@ namespace InternetRadio.Controllers
                     _webPlayer.Stop();
                     break;
 
-                case "VolumeUp":
+                case "Volume+":
                     _webPlayer.VolumeUp();
                     break;
 
-                case "VolumeUpUp":
+                case "Volume++":
                     _webPlayer.VolumeUpUp();
                     break;
 
-                case "VolumeDown":
+                case "Volume-":
                     _webPlayer.VolumeDown();
                     break;
 
-                case "VolumeDownDown":
+                case "Volume--":
                     _webPlayer.VolumeDownDown();
                     break;
             }
