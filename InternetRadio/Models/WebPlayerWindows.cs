@@ -3,7 +3,7 @@ using System;
 
 namespace InternetRadio.Models
 {
-    public class WebPlayer : IWebPlayer
+    public class WebPlayerWindows : IWebPlayer
     {
         private MediaFoundationReader _mediaFoundationReader;
         private WaveOutEvent _waveOutEvent; 

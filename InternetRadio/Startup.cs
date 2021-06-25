@@ -28,7 +28,7 @@ namespace InternetRadio
             services.AddControllersWithViews();
             services.AddTransient<IWebRadio, WebRadio>();
             services.AddSingleton<IWebRadiosRepository, WebRadiosRepository>();
-            services.AddSingleton<IWebPlayer, WebPlayer>(); 
+            services.AddSingleton<IWebPlayer, WebPlayerWindows>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
