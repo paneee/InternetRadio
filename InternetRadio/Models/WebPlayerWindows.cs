@@ -12,6 +12,17 @@ namespace InternetRadio.Models
         private float volumeBigStep = 0.2f;
         private float volumeSmallStep = 0.05f;
 
+        private bool Validate()
+        {
+            if(_waveOutEvent != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }     
+        }
         public string GetActualPlay()
         {
             return _actualPlay;
@@ -24,15 +35,7 @@ namespace InternetRadio.Models
 
         public void Play(string urlWebRadio)
         {
-            if(_waveOutEvent == null)
-            {
-                _mediaFoundationReader = new MediaFoundationReader(urlWebRadio);
-                _waveOutEvent = new WaveOutEvent();
-                _waveOutEvent.Init(_mediaFoundationReader);
-                _waveOutEvent.Play();
-                _actualPlay = urlWebRadio;
-            }
-            else
+            if(Validate())
             {
                 _lastPlay = _actualPlay;
                 _waveOutEvent.Stop();
@@ -43,16 +46,30 @@ namespace InternetRadio.Models
                 _waveOutEvent.Init(_mediaFoundationReader);
                 _waveOutEvent.Play();
                 _actualPlay = urlWebRadio;
+            }
+            else
+            {
+                if(urlWebRadio != null)
+                {
+                    _mediaFoundationReader = new MediaFoundationReader(urlWebRadio);
+                    _waveOutEvent = new WaveOutEvent();
+                    _waveOutEvent.Init(_mediaFoundationReader);
+                    _waveOutEvent.Play();
+                    _actualPlay = urlWebRadio;
+                }
             } 
         }
 
 
         public void Stop()
         {
-            _waveOutEvent.Stop();
-            _waveOutEvent.Dispose();
-            _mediaFoundationReader.Dispose();
-            _actualPlay = null;
+            if (Validate())
+            {
+                _waveOutEvent.Stop();
+                _waveOutEvent.Dispose();
+                _mediaFoundationReader.Dispose();
+                _actualPlay = null;
+            }
         }
 
         public int ActualVolume()
@@ -62,49 +79,61 @@ namespace InternetRadio.Models
 
         public void VolumeDown()
         {
-            if (_waveOutEvent.Volume - volumeSmallStep >= 0)
+            if (Validate())
             {
-                _waveOutEvent.Volume = _waveOutEvent.Volume - volumeSmallStep;
-            }
-            else
-            {
-                _waveOutEvent.Volume = 0;
+                if (_waveOutEvent.Volume - volumeSmallStep >= 0)
+                {
+                    _waveOutEvent.Volume = _waveOutEvent.Volume - volumeSmallStep;
+                }
+                else
+                {
+                    _waveOutEvent.Volume = 0;
+                }
             }
         }
 
         public void VolumeDownDown()
         {
-            if (_waveOutEvent.Volume - volumeBigStep >= 0)
+            if (Validate())
             {
-                _waveOutEvent.Volume = _waveOutEvent.Volume - volumeBigStep;
-            }
-            else
-            {
-                _waveOutEvent.Volume = 0;
+                if (_waveOutEvent.Volume - volumeBigStep >= 0)
+                {
+                    _waveOutEvent.Volume = _waveOutEvent.Volume - volumeBigStep;
+                }
+                else
+                {
+                    _waveOutEvent.Volume = 0;
+                }
             }
         }
 
         public void VolumeUp()
         {
-            if (_waveOutEvent.Volume + volumeSmallStep <= 1)
+            if (Validate())
             {
-                _waveOutEvent.Volume = _waveOutEvent.Volume + volumeSmallStep;
-            }
-            else
-            {
-                _waveOutEvent.Volume = 1;
+                if (_waveOutEvent.Volume + volumeSmallStep <= 1)
+                {
+                    _waveOutEvent.Volume = _waveOutEvent.Volume + volumeSmallStep;
+                }
+                else
+                {
+                    _waveOutEvent.Volume = 1;
+                }
             }
         }
 
         public void VolumeUpUp()
         {
-            if (_waveOutEvent.Volume + volumeBigStep <= 1)
+            if (Validate())
             {
-                _waveOutEvent.Volume = _waveOutEvent.Volume + volumeBigStep;
-            }
-            else
-            {
-                _waveOutEvent.Volume = 1;
+                if (_waveOutEvent.Volume + volumeBigStep <= 1)
+                {
+                    _waveOutEvent.Volume = _waveOutEvent.Volume + volumeBigStep;
+                }
+                else
+                {
+                    _waveOutEvent.Volume = 1;
+                }
             }
         }
     }

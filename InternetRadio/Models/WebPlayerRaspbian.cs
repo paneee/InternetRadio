@@ -10,7 +10,6 @@ namespace InternetRadio.Models
 
         private string LinuxCommand(string[] arguments)
         {
-            arguments = ;
             using (System.Diagnostics.Process proc = new System.Diagnostics.Process())
             {
                 proc.StartInfo.FileName = arguments[0];
