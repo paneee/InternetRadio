@@ -42,6 +42,35 @@ namespace InternetRadio.Controllers
         }
 
         [HttpGet]
+        public IEnumerable<WebRadio> VolumeUp()
+        {
+            _webPlayer.VolumeUp();
+            return _radiosRepository.GetAllStation();
+        }
+
+        [HttpGet]
+        public IEnumerable<WebRadio> VolumeUpUp()
+        {
+            _webPlayer.VolumeUpUp();
+            return _radiosRepository.GetAllStation();
+        }
+
+        [HttpGet]
+        public IEnumerable<WebRadio> VolumeDown()
+        {
+            _webPlayer.VolumeDown();
+            return _radiosRepository.GetAllStation();
+        }
+
+        [HttpGet]
+        public IEnumerable<WebRadio> VolumeDownDown()
+        {
+            _webPlayer.VolumeDownDown();
+            return _radiosRepository.GetAllStation();
+        }
+
+
+        [HttpGet]
         public IEnumerable<WebRadio> GetAllStation()
         {
             return _radiosRepository.GetAllStation();
