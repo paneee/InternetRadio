@@ -20,19 +20,32 @@ Listenable radio stations are in the ../Models/WebRadiosRepository.cs, you can a
 
 ### Web API - Available commands
 
-Returns all possible stations.
+Play station
 ```bash
-https://localhost:44374/apiradio/getallstation
+https://localhost:44374/apiradio/Play
+{
+    "name": "ChiliZet",
+    "url": "https://ch.cdn.eurozet.pl/chi-net.mp3"
+}
 ```
 
+Add station 
 ```bash
 https://localhost:44374/apiradio/addstation
-{"name":"ChiliZett","url":"https://ch.cdn.eurozet.pl/chi-net.mp3"}
+{
+    "name": "ChiliZet",
+    "url": "https://ch.cdn.eurozet.pl/chi-net.mp3"
+}
 ```
 
-Returns the current volume.
+
+Remove station
 ```bash
-192.168.1.50:5000/api/getVolume
+https://localhost:44374/apiradio/removestation
+{
+    "name": "ChiliZet",
+    "url": "https://ch.cdn.eurozet.pl/chi-net.mp3"
+}
 ```
 
 Increases the volume by 15%. To decrease, enter the argument -15.
