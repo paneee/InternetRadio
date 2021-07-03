@@ -15,7 +15,7 @@ Listenable radio stations are in the ../Models/WebRadiosRepository.cs, you can a
 
 ### Web page
 
-![2021-07-03_191433](https://user-images.githubusercontent.com/27755739/124363168-067cfb00-dc3a-11eb-96bb-debc0d124c9d.png)
+![2021-07-03_202533](https://user-images.githubusercontent.com/27755739/124363670-f1ee3200-dc3c-11eb-9f90-2c6d794c67db.png)
 
 
 ### Web API - Available commands
