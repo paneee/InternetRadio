@@ -22,7 +22,12 @@ Listenable radio stations are in the ../Models/WebRadiosRepository.cs, you can a
 
 Returns all possible stations.
 ```bash
-192.168.1.50:5000/api/getAllStation
+https://localhost:44374/apiradio/getallstation
+```
+
+```bash
+https://localhost:44374/apiradio/addstation
+{"name":"ChiliZett","url":"https://ch.cdn.eurozet.pl/chi-net.mp3"}
 ```
 
 Returns the current volume.
