@@ -48,22 +48,22 @@ https://localhost:44374/apiradio/removestation
 }
 ```
 
-Increases the volume by 15%. To decrease, enter the argument -15.
+Increases the volume by 10%.
 ```bash
-192.168.1.50:5000/api/setVolume/+15
+https://localhost:44374/apiradio/VolumeUp
 ```
 
-Sets volume to 40.
+Increases the volume by 20%.
 ```bash
-192.168.1.50:5000/api/setVolume/40
+https://localhost:44374/apiradio/VolumeUpUp
 ```
 
-Sets the station being played back to RNS. List of available stations in the file model.py.
+Decrease the volume by 10%.
 ```bash
-192.168.1.50:5000/api/Play/RNS
+https://localhost:44374/apiradio/VolumeDown
 ```
 
-Stops playing a station.
+Decrease the volume by 20%.
 ```bash
-192.168.1.50:5000/api/Stop
+https://localhost:44374/apiradio/VolumeDownDown
 ```
